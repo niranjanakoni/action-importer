@@ -15,11 +15,11 @@ else
   docker build -t jenkins:$container_name -f $CODESPACE_VSCODE_FOLDER/jenkins/bootstrap/Dockerfile .
 
   # Build container
-  docker run -d --name jenkins -p 8080:8080 --env JENKINS_ADMIN_ID=$username --env JENKINS_ADMIN_PASSWORD=$password jenkins:$container_name
+  docker run -d --name jenkins -p 8081:8080 --env JENKINS_ADMIN_ID=$username --env JENKINS_ADMIN_PASSWORD=$password jenkins:$container_name
 fi
 
 echo -e "\nWaiting for Jenkins to start..."
-while ! curl -s http://localhost:8080/ > /dev/null; do
+while ! curl -s http://localhost:8081/ > /dev/null; do
   printf "."
   sleep 5
 done
